@@ -1,120 +1,230 @@
-
 /* GLOBAL STYLING */
-  .wrapper {
-    width: 900px;
-    margin: 0 auto;
-  }
-  .container {
-    display: grid;
-    grid-template-columns: repeat(9, 69px);
-    grid-template-rows: repeat(8, 69px);
-    background-color: darkgrey;
-    row-gap: 0.5em;
-    column-gap: 0.5em;
-  }
-  .item2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3em;
-    background-color: #eeeed2;
-  }
-  .item1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3em;
-    background-color: #769656;
-  }
-  .edge {
-    justify-self: center;
-    align-self: center;
-    color: white;
-  }
 
+* {
+  box-sizing: border-box;
+}
+body{
+  background-color: gold;
+}
+.wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(9, 69px);
+  grid-template-rows: repeat(8, 69px);
+  background-color: #b76014;
+  grid-row-gap: 0.2em;
+  grid-column-gap: 0.2em;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.item2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  background-color: #eeeed2;
+}
+
+.item1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  background-color: #769656;
+}
+
+.edge {
+  justify-self: center;
+  align-self: center;
+  color: white;
+}
 
 /* WHITE FIGURES*/
-  .white.rook{
-    height: 50px;
-    width: 50px;
-    background-image: url('img/WhiteRook.png');
-    background-size: cover;
-  }
 
-  .white.knight{
-    height: 50px;
-    width: 50px;
-    background-image: url('img/WhiteKnight.png');
-    background-size: cover;
-  }
+.white.rook {
+  height: 50px;
+  width: 50px;
+  background-image: url('img/WhiteRook.png');
+  background-size: cover;
+}
 
-  .white.bishop{
-    height: 50px;
-    width: 50px;
-    background-image: url('img/WhiteBishop.png');
-    background-size: cover;
-  }
+.white.knight {
+  height: 50px;
+  width: 50px;
+  background-image: url('img/WhiteKnight.png');
+  background-size: cover;
+}
 
-  .white.queen{
-    height: 50px;
-    width: 50px;
-    background-image: url('img/WhiteQueen.png');
-    background-size: cover;
-  }
+.white.bishop {
+  height: 50px;
+  width: 50px;
+  background-image: url('img/WhiteBishop.png');
+  background-size: cover;
+}
 
-  .white.king{
-    height: 50px;
-    width: 50px;
-    background-image: url('img/WhiteKing.png');
-    background-size: cover;
-  }
+.white.queen {
+  height: 50px;
+  width: 50px;
+  background-image: url('img/WhiteQueen.png');
+  background-size: cover;
+}
 
-  .white.pawn{
-    height: 50px;
-    width: 50px;
-    background-image: url('img/WhitePawn.png');
-    background-size: cover;
-  }
+.white.king {
+  height: 50px;
+  width: 50px;
+  background-image: url('img/WhiteKing.png');
+  background-size: cover;
+}
+
+.white.pawn {
+  height: 50px;
+  width: 50px;
+  background-image: url('img/WhitePawn.png');
+  background-size: cover;
+}
 
 /* BLACK FIGURES*/
-.black.rook{
+
+.black.rook {
   height: 50px;
   width: 50px;
   background-image: url('img/BlackRook.png');
   background-size: cover;
 }
 
-.black.knight{
+.black.knight {
   height: 50px;
   width: 50px;
   background-image: url('img/BlackKnight.png');
   background-size: cover;
 }
 
-.black.bishop{
+.black.bishop {
   height: 50px;
   width: 50px;
   background-image: url('img/BlackBishop.png');
   background-size: cover;
 }
 
-.black.queen{
+.black.queen {
   height: 50px;
   width: 50px;
   background-image: url('img/BlackQueen.png');
   background-size: cover;
 }
 
-.black.king{
+.black.king {
   height: 50px;
   width: 50px;
   background-image: url('img/BlackKing.png');
   background-size: cover;
 }
 
-.pawn{
+.black.pawn {
   height: 50px;
   width: 50px;
   background-image: url('img/BlackPawn.png');
   background-size: cover;
+}
+@media screen and (max-width: 700px){
+  .wrapper {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .container {
+    grid-template-columns: repeat(9, 40px);
+    grid-template-rows: repeat(8, 40px);
+  }
+
+  .item2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    background-color: #eeeed2;
+  }
+
+  .item1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    background-color: #769656;
+  }
+
+  .edge {
+    justify-self: center;
+    align-self: center;
+    color: white;
+  }
+
+  /* WHITE FIGURES*/
+
+  .white.rook {
+    height: 30px;
+    width: 30px;
+  }
+
+  .white.knight {
+    height: 30px;
+    width: 30px;
+  }
+
+  .white.bishop {
+    height: 30px;
+    width: 30px;
+  }
+
+  .white.queen {
+    height: 30px;
+    width: 30px;
+  }
+
+  .white.king {
+    height: 30px;
+    width: 30px;
+  }
+
+  .white.pawn {
+    height: 30px;
+    width: 30px;
+  }
+
+  /* BLACK FIGURES*/
+
+  .black.rook {
+    height: 30px;
+    width: 30px;
+  }
+
+  .black.knight {
+    height: 30px;
+    width: 30px;
+  }
+
+  .black.bishop {
+    height: 30px;
+    width: 30px;
+  }
+
+  .black.queen {
+    height: 30px;
+    width: 30px;
+  }
+
+  .black.king {
+    height: 30px;
+    width: 30px;
+  }
+
+  .black.pawn {
+    height: 30px;
+    width: 30px;
+  }
 }
