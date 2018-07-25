@@ -1,3 +1,5 @@
+
+/* GLOBAL STYLING */
   .wrapper {
     width: 900px;
     margin: 0 auto;
@@ -28,4 +30,91 @@
     justify-self: center;
     align-self: center;
     color: white;
+  }
+
+
+/* WHITE FIGURES*/
+  .white.rook{
+    height: 50px;
+    width: 50px;
+    background-image: url('img/WhiteRook.png');
+    background-size: cover;
+  }
+
+  .white.knight{
+    height: 50px;
+    width: 50px;
+    background-image: url('img/WhiteKnight.png');
+    background-size: cover;
+  }
+
+  .white.bishop{
+    height: 50px;
+    width: 50px;
+    background-image: url('img/WhiteBishop.png');
+    background-size: cover;
+  }
+
+  .white.queen{
+    height: 50px;
+    width: 50px;
+    background-image: url('img/WhiteQueen.png');
+    background-size: cover;
+  }
+
+  .white.king{
+    height: 50px;
+    width: 50px;
+    background-image: url('img/WhiteKing.png');
+    background-size: cover;
+  }
+
+  .white.pawn{
+    height: 50px;
+    width: 50px;
+    background-image: url('img/WhitePawn.png');
+    background-size: cover;
+  }
+
+/* BLACK FIGURES*/
+.black.rook{
+  height: 50px;
+  width: 50px;
+  background-image: url('img/BlackRook.png');
+  background-size: cover;
+}
+
+.black.knight{
+  height: 50px;
+  width: 50px;
+  background-image: url('img/BlackKnight.png');
+  background-size: cover;
+}
+
+.black.bishop{
+  height: 50px;
+  width: 50px;
+  background-image: url('img/BlackBishop.png');
+  background-size: cover;
+}
+
+.black.queen{
+  height: 50px;
+  width: 50px;
+  background-image: url('img/BlackQueen.png');
+  background-size: cover;
+}
+
+.black.king{
+  height: 50px;
+  width: 50px;
+  background-image: url('img/BlackKing.png');
+  background-size: cover;
+}
+
+.pawn{
+  height: 50px;
+  width: 50px;
+  background-image: url('img/BlackPawn.png');
+  background-size: cover;
 }
