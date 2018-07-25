@@ -2,14 +2,16 @@
     width: 900px;
     margin: 0 auto;
   }
+
   .container {
     display: grid;
     grid-template-columns: repeat(9, 69px);
     grid-template-rows: repeat(8, 69px);
     background-color: darkgrey;
-    row-gap: 0.5em;
-    column-gap: 0.5em;
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
   }
+
   .item2 {
     display: flex;
     align-items: center;
@@ -17,6 +19,7 @@
     font-size: 3em;
     background-color: #eeeed2;
   }
+
   .item1 {
     display: flex;
     align-items: center;
@@ -24,8 +27,9 @@
     font-size: 3em;
     background-color: #769656;
   }
+
   .edge {
     justify-self: center;
     align-self: center;
     color: white;
-}
+  }
