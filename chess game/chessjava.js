@@ -1,6 +1,5 @@
 
  	let dragged;
-  let rook = ["12","13","22"];
   let moves = [];
   let turn="white";
   let enemy = "black";
@@ -8,7 +7,7 @@
 
   function isEmpty(obj) {
     return Object.keys(obj).length === 0;
-}
+  }
 
 
 
@@ -17,22 +16,23 @@
     if (clas.indexOf("rook")>-1){
       rookmoves(figure.parentNode.id);
     }
-/*      for (let i in rook){
-
-         let field = document.getElementById(rook[i]);
-
-         if(isEmpty(field.children)){
-
-           moves.push(rook[i])
-
-         }else{
-
-          if(field.children[0].className.indexOf(turn) < 0){
-            moves.push(rook[i])
-
-          }
-        }
-      }*/
+    if(clas.indexOf("pawn")>-1){
+      pawnmoves(figure.parentNode.id);
+    }
+    if(clas.indexOf("knight")>-1){
+      knightmoves(figure.parentNode.id);
+    }
+    if(clas.indexOf("bishop")>-1){
+      bishopmoves(figure.parentNode.id);
+    }
+    if(clas.indexOf("queen")>-1){
+      queenmoves(figure.parentNode.id);
+    }
+    if(clas.indexOf("king")>-1){
+      kingmoves(figure.parentNode.id);
+    }
+  
+       console.log(moves);
   }
 
   function checkmove(field){
@@ -45,9 +45,9 @@
      return false;
   }
 
-  function rookmoves (field){
-    let i = field.charAt(0);
-    let j = field.charAt(1);
+  function rookmoves (fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
 
     let count =i;
       while ( count < 8 ){
@@ -122,18 +122,408 @@
         moves.push(id);
         count ++;
       }
-      console.log(moves);
+
   }
+
+  function pawnmoves(fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
+    if( turn == "white"){
+      if (i < 8){
+        let id = (1+Number(i)) + j;
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }
+        if (j < 8){
+          id = (1+Number(i)) + "" + (1+Number(j));
+          field = document.getElementById(id);
+
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
+          }
+        }
+        if (j > 1){
+          id = (1+Number(i)) + "" + (Number(j)-1);
+          field = document.getElementById(id);
+
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
+          }
+        }
+        if ( i == 2){
+
+          let id = (2+Number(i)) + j;
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }
+        }
+      }      
+    }
+    if( turn == "black"){
+      if (i >1){
+        let id = (Number(i)-1) + j;
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }
+        if (j < 8){
+          id = (Number(i)-1) + "" + (1+Number(j));
+          field = document.getElementById(id);
+
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
+          }
+        }
+        if (j > 1){
+          id = (Number(i)-1) + "" + (Number(j)-1);
+          field = document.getElementById(id);
+
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
+          }
+        }
+
+        if ( i == 6){
+
+          let id = (Number(i)-2) + j;
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }
+        }
+      }      
+    }
+  }
+
+  function knightmoves(fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
+      if (i < 7){
+        if (j < 8){
+          let id = (Number(i)+2) + "" +(Number(j)+1);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+        if (j > 1){
+          let id = (Number(i)+2) + "" +(Number(j)-1);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+      }
+      if (i < 8){
+        if (j < 7){
+          let id = (Number(i)+1) + "" +(Number(j)+2);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+        if (j > 2){
+          let id = (Number(i)+1) + "" +(Number(j)-2);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+      }
+      if (i >1){
+        if (j < 7){
+          let id = (Number(i)-1) + "" +(Number(j)+2);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+        if (j > 2){
+          let id = (Number(i)-1) + "" +(Number(j)-2);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+      }
+      if (i > 2){
+        if (j < 8){
+          let id = (Number(i)-2) + "" +(Number(j)+1);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+        if (j > 1){
+          let id = (Number(i)-2) + "" +(Number(j)-1);
+          let field = document.getElementById(id);
+
+          if(isEmpty(field.children)){
+            moves.push(id);
+          }else if (field.children[0].className.indexOf(enemy) > -1){
+            moves.push(id);
+          }
+        }
+      }
+  }
+
+  function bishopmoves (fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
+    let count = 1;
+
+    while (Number(i)+ count < 9 && Number(j) + count < 9){
+
+      id = (Number(i)+count)+""+(Number(j) + count);
+      let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){}
+        else{
+
+          if(field.children[0].className.indexOf(turn) > -1){
+
+           break;
+
+          }else{
+
+             moves.push(id);
+             break;
+          }
+        }
+
+      moves.push(id);
+      count++
+    }
+
+    count = 1;
+    while (Number(i)+ count < 9 && Number(j) - count > 0 ){
+      
+      id = (Number(i)+count)+""+(Number(j) - count);
+      let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){}
+        else{
+
+          if(field.children[0].className.indexOf(turn) > -1){
+
+           break;
+
+          }else{
+
+             moves.push(id);
+             break;
+          }
+        }
+
+      moves.push(id);
+      count++
+    }
+    count = 1;
+    while (Number(i)- count > 0 && Number(j) + count < 9){
+
+      id = (Number(i)-count)+""+(Number(j) + count);
+      let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){}
+        else{
+
+          if(field.children[0].className.indexOf(turn) > -1){
+
+           break;
+
+          }else{
+
+             moves.push(id);
+             break;
+          }
+        }
+
+      moves.push(id);
+      count++
+    }
+    count = 1;
+    while (Number(i)- count > 0 && Number(j) - count >0){
+
+      id = (Number(i)-count)+""+(Number(j) - count);
+      let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){}
+        else{
+
+          if(field.children[0].className.indexOf(turn) > -1){
+
+           break;
+
+          }else{
+
+             moves.push(id);
+             break;
+          }
+        }
+
+      moves.push(id);
+      count++
+    }
+  }
+
+  function queenmoves(field){
+    rookmoves(field);
+    bishopmoves(field);
+  }
+
+  function kingmoves(fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
+
+      if (j < 8){
+        id = (Number(i)) + "" +(Number(j)+1);
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }else if (field.children[0].className.indexOf(enemy) > -1){
+          moves.push(id);
+        }
+      }
+      if (j > 1){
+        id = (Number(i)) + "" +(Number(j)-1);
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }else if (field.children[0].className.indexOf(enemy) > -1){
+          moves.push(id);
+        }
+      }
+
+
+    if (i < 8 ){
+      let id = (Number(i)+1) + "" +(Number(j));
+      let field = document.getElementById(id);
+
+      if(isEmpty(field.children)){
+        moves.push(id);
+      }else if (field.children[0].className.indexOf(enemy) > -1){
+        moves.push(id);
+      }
+
+
+      if (j < 8){
+        id = (Number(i)+1) + "" +(Number(j)+1);
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }else if (field.children[0].className.indexOf(enemy) > -1){
+          moves.push(id);
+        }
+      }
+      if (j > 1){
+        id = (Number(i)+1) + "" +(Number(j)-1);
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }else if (field.children[0].className.indexOf(enemy) > -1){
+          moves.push(id);
+        }
+      }
+    }    
+    if (i > 1){
+      let id = (Number(i)-1) + "" +(Number(j));
+      let field = document.getElementById(id);
+
+      if(isEmpty(field.children)){
+        moves.push(id);
+      }else if (field.children[0].className.indexOf(enemy) > -1){
+        moves.push(id);
+      }
+
+
+      if (j < 8){
+        id = (Number(i)-1) + "" +(Number(j)+1);
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }else if (field.children[0].className.indexOf(enemy) > -1){
+          moves.push(id);
+        }
+      }
+      if (j > 1){
+        id = (Number(i)-1) + "" +(Number(j)-1);
+        let field = document.getElementById(id);
+
+        if(isEmpty(field.children)){
+          moves.push(id);
+        }else if (field.children[0].className.indexOf(enemy) > -1){
+          moves.push(id);
+        }
+      }
+    }
+  }
+
+  function showmoves(){
+    for (let i = 0; i < moves.length; i++){
+      document.getElementById(moves[i]).style.backgroundColor = "orange";
+    }
+  }
+  function resetcolor(){
+    for (let i = 0; i < moves.length; i++){
+     if(document.getElementById(moves[i]).className.indexOf('1') > -1) {
+     document.getElementById(moves[i]).style.backgroundColor = "#769656";
+     }else{
+     document.getElementById(moves[i]).style.backgroundColor = "#eeeed2";
+     }
+   }
+  }
+
 
  	document.addEventListener("dragstart",function(event) {
     createmove(event.target);
  		event.dataTransfer.setData('text/plain',null);
  		dragged = event.target;
+    showmoves();
 
  	})
 
  	document.addEventListener("dragend", function(event) {
-
+    resetcolor();
     moves=[];
  	})
 
