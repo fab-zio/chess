@@ -196,7 +196,7 @@
           }
         }
 
-        if ( i == 6){
+        if ( i == 7){
 
           let id = (Number(i)-2) + j;
           let field = document.getElementById(id);
@@ -513,13 +513,37 @@
    }
   }
 
+  function endturn(){
+    let temp;
+    let tclass = "."+ turn;
+    let eclass = "."+ enemy;
+    let turnfigures = document.querySelectorAll(tclass);
+    let enemyfigures = document.querySelectorAll(eclass);
+    console.log(turnfigures);
+    
+    for(let fig = 0 ; fig < turnfigures.length ; fig++){
+      console.log(fig);
+      console.log(turnfigures[fig]);
+      turnfigures[fig].setAttribute('draggable', 'false');;
+    }
+    for (let fig = 0 ; fig < enemyfigures.length ; fig++){
+            console.log(fig);
+      console.log(turnfigures[fig]);
+      enemyfigures[fig].setAttribute('draggable', 'true');;
+    }
+    temp = enemy;
+    enemy = turn;
+    turn = temp;
+  }
+
 
  	document.addEventListener("dragstart",function(event) {
-    createmove(event.target);
- 		event.dataTransfer.setData('text/plain',null);
- 		dragged = event.target;
-    showmoves();
-
+    if(event.target.className.indexOf(turn) > -1){
+        createmove(event.target);
+     		event.dataTransfer.setData('text/plain',null);
+     		dragged = event.target;
+        showmoves();
+      }
  	})
 
  	document.addEventListener("dragend", function(event) {
@@ -569,5 +593,6 @@
               event.target.appendChild( dragged );
        }
       candrop=false;
-    }
+      endturn();
+      }
   });
