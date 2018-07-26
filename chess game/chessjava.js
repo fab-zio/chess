@@ -45,9 +45,9 @@
      return false;
   }
 
-  function rookmoves (field){
-    let i = field.charAt(0);
-    let j = field.charAt(1);
+  function rookmoves (fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
 
     let count =i;
       while ( count < 8 ){
@@ -125,9 +125,9 @@
 
   }
 
-  function pawnmoves(field){
-    let i = field.charAt(0);
-    let j = field.charAt(1);
+  function pawnmoves(fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
     if( turn == "white"){
       if (i < 8){
         let id = (1+Number(i)) + j;
@@ -136,13 +136,24 @@
         if(isEmpty(field.children)){
           moves.push(id);
         }
+        if (j < 8){
+          id = (1+Number(i)) + "" + (1+Number(j));
+          field = document.getElementById(id);
 
-        id = (1+Number(i)) + "" + (1+Number(j));
-        field = document.getElementById(id);
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
+          }
+        }
+        if (j > 1){
+          id = (1+Number(i)) + "" + (Number(j)-1);
+          field = document.getElementById(id);
 
-        if(!isEmpty(field.children)){
-          if(field.children[0].className.indexOf(enemy) > -1){
-            moves.push(id);
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
           }
         }
         if ( i == 2){
@@ -164,15 +175,27 @@
         if(isEmpty(field.children)){
           moves.push(id);
         }
+        if (j < 8){
+          id = (Number(i)-1) + "" + (1+Number(j));
+          field = document.getElementById(id);
 
-        id = (Number(i)-1) + "" + (Number(j)-1);
-        field = document.getElementById(id);
-
-        if(!isEmpty(field.children)){
-          if(field.children[0].className.indexOf(enemy) > -1){
-            moves.push(id);
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
           }
         }
+        if (j > 1){
+          id = (Number(i)-1) + "" + (Number(j)-1);
+          field = document.getElementById(id);
+
+          if(!isEmpty(field.children)){
+            if(field.children[0].className.indexOf(enemy) > -1){
+              moves.push(id);
+            }
+          }
+        }
+
         if ( i == 6){
 
           let id = (Number(i)-2) + j;
@@ -186,9 +209,9 @@
     }
   }
 
-  function knightmoves(field){
-    let i = field.charAt(0);
-    let j = field.charAt(1);
+  function knightmoves(fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
       if (i < 7){
         if (j < 8){
           let id = (Number(i)+2) + "" +(Number(j)+1);
@@ -279,9 +302,9 @@
       }
   }
 
-  function bishopmoves (field){
-    let i = field.charAt(0);
-    let j = field.charAt(1);
+  function bishopmoves (fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
     let count = 1;
 
     while (Number(i)+ count < 9 && Number(j) + count < 9){
@@ -383,9 +406,9 @@
     bishopmoves(field);
   }
 
-  function kingmoves(field){
-    let i = field.charAt(0);
-    let j = field.charAt(1);
+  function kingmoves(fiel){
+    let i = fiel.charAt(0);
+    let j = fiel.charAt(1);
 
       if (j < 8){
         id = (Number(i)) + "" +(Number(j)+1);
@@ -475,17 +498,32 @@
     }
   }
 
+  function showmoves(){
+    for (let i = 0; i < moves.length; i++){
+      document.getElementById(moves[i]).style.backgroundColor = "orange";
+    }
+  }
+  function resetcolor(){
+    for (let i = 0; i < moves.length; i++){
+     if(document.getElementById(moves[i]).className.indexOf('1') > -1) {
+     document.getElementById(moves[i]).style.backgroundColor = "#769656";
+     }else{
+     document.getElementById(moves[i]).style.backgroundColor = "#eeeed2";
+     }
+   }
+  }
 
 
  	document.addEventListener("dragstart",function(event) {
     createmove(event.target);
  		event.dataTransfer.setData('text/plain',null);
  		dragged = event.target;
+    showmoves();
 
  	})
 
  	document.addEventListener("dragend", function(event) {
-
+    resetcolor();
     moves=[];
  	})
 
